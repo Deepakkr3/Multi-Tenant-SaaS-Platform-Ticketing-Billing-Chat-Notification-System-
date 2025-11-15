@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  eureka-server:
+    build: ./EUREKA-SERVER
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - micro-net
+
+  user-service:
+    build: ./USER-SERVICE
+    container_name: user-service
+    depends_on:
+      - eureka-server
+    environment:
+      SPRING_APPLICATION_NAME: USER-SERVICE
+      SPRING_DATASOURCE_URL: jdbc:mysql://192.168.29.14:3306/userDb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: dev
+      SPRING_DATASOURCE_PASSWORD: Suhora_Dev@123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    ports:
+      - "8081:8081"
+    networks:
+      - micro-net
+
+  gateway-server:
+    build: ./GATEWAY-SERVER
+    container_name: gateway-server
+    depends_on:
+      - eureka-server
+      - user-service
+    environment:
+      SPRING_APPLICATION_NAME: GATEWAY-SERVER
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+    ports:
+      - "8888:8888"
+    networks:
+      - micro-net
+
+networks:
+  micro-net:
+    driver: bridge

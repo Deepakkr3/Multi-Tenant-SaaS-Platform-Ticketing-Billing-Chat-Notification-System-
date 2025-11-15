@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: AUTH-SERVICE
+
+
+
+  datasource:
+    url: jdbc:mysql://192.168.29.14:3306/userDb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: dev
+    password: Suhora_Dev@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.29.14:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+jwt:
+  secret: mySuperSecretKeyThatIsAtLeast32CharsLong123!
+  expiration: 86400000
+
+

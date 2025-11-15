@@ -1,0 +1,40 @@
+# Maven / Gradle build
+target/
+build/
+
+# Java class files
+*.class
+
+# JAR / WAR / EAR
+*.jar
+*.war
+*.ear
+
+# Maven / Gradle specific files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+dependency-reduced-pom.xml
+*.log
+
+# IDEs
+.idea/
+*.iml
+*.iws
+*.classpath
+*.project
+.vscode/
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Environment / secret files
+*.env
+application*.yml
+
+
+# Logs
+logs/
+*.out
