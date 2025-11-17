@@ -10,12 +10,12 @@ services:
       - micro-net
 
   user-service:
-    build: ./USER-SERVICE
+    build: ./AUTH-SERVICE
     container_name: user-service
     depends_on:
       - eureka-server
     environment:
-      SPRING_APPLICATION_NAME: USER-SERVICE
+      SPRING_APPLICATION_NAME: AUTH-SERVICE
       SPRING_DATASOURCE_URL: jdbc:mysql://192.168.29.14:3306/userDb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: dev
       SPRING_DATASOURCE_PASSWORD: Suhora_Dev@123
