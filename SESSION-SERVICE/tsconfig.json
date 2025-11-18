@@ -1,20 +1,21 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "types": ["node", "./src/types/index.d.ts", "jest"],
-     "target": "ES2020",
-    "module": "CommonJS",
-   "moduleResolution": "node",
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "lib": ["ES2020"],
+    "target": "ES2020",
+    "module": "commonjs",
+    "outDir": "./dist",
     "rootDir": "./src",
-    "outDir": "./dist",     
-    "forceConsistentCasingInFileNames": true,
-    "strictPropertyInitialization": false,
     "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*.ts", "src/tests/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["lib/**/*.ts", "src/**/*.ts", "src/tests/**/*.ts", "src/service/globalOrderControlets"],
+  "exclude": ["node_modules"],
+  "typeRoots": ["./src/types", "./node_modules/@types"]
 }

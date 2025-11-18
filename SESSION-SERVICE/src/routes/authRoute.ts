@@ -1,25 +1,19 @@
 import { Router } from "express";
-import {
-  login,
-  refreshSession,
-  logout,
-} from "../controllers/authController.js";
-import { auth } from "../middlewares/auth.js";
+import { login, register } from "../controllers/authController";
+
+
+
+
 
 const router = Router();
 
-// Public routes
+
+
+router.post("/register", register);
 router.post("/login", login);
-router.post("/refresh", refreshSession);
-
-// Protected routes
-router.post("/logout", auth, logout);
-
-router.get("/profile", auth, (req, anyRes) => {
-  return anyRes.json({
-    message: "Protected content",
-    user: (req as any).user, 
-  });
-});
+// router.post("/", authenticate, authorize("CREATE_USER"), createUser);
+// router.get("/", authenticate, authorize("READ_USER"), getUsers);
+// router.delete("/:id", authenticate, authorize("DELETE_USER"), deleteUser);
+// router.get("/profile", authMiddleware, getProfile);
 
 export default router;
