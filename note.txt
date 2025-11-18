@@ -1,0 +1,6 @@
+sudo docker pull redis
+
+sudo docker run -d \
+  --name redis \
+  -p 6379:6379 \
+  redis redis-server --appendonly yes --protected-mode no
